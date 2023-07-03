@@ -1,0 +1,32 @@
+version: '3'
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: your_username
+      POSTGRES_PASSWORD: your_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  apache:
+    image: httpd
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./apache_config:/usr/local/apache2/conf/httpd.conf
+      - ./website:/usr/local/apache2/htdocs
+
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - ./node_app:/app
+
+volumes:
+  postgres_data:
