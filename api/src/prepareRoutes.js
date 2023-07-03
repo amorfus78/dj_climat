@@ -1,4 +1,4 @@
-import userRoutes from "./routes/userRoutes.js"
+import userRoutes from "./routes/users/userRoutes.js"
 
 const prepareRoutes = (ctx) => {
   userRoutes(ctx)
