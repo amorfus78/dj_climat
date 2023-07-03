@@ -5,6 +5,9 @@ import cookieParser from "cookie-parser"
 import { fileURLToPath } from "url"
 import logger from "morgan"
 import prepareRoutes from "./src/prepareRoutes.js"
+import config from "./src/config.js"
+import knex from "knex"
+import BaseModel from "./src/db/models/BaseModel.js"
 
 var app = express()
 
@@ -21,6 +24,10 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, "public")))
+
+const db = knex(config.db)
+
+BaseModel.knex(db)
 
 prepareRoutes({ app })
 // catch 404 and forward to error handler
