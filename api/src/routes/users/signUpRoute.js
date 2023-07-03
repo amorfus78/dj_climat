@@ -20,7 +20,6 @@ const signUpRoute = ({ app }) => {
       },
     }),
     async (req, res) => {
-      console.log("hello")
       const { email, password, display_name, phone_number } = req.locals.body
 
       const user = await UserModel.query().findOne({ email: email })
