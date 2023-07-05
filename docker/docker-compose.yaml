@@ -1,0 +1,33 @@
+#RENOMMER LE FICHIER EN docker-compose.yml AVANT DE LE LANCER
+
+version: '3'
+services:
+  db:
+    image: postgres
+    ports:
+      - "3457:5432"
+    environment:
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
+      - POSTGRES_DB=mydb
+  nginx:
+    image: nginx
+    ports:
+      - "8080:80"
+    environment:
+     - NGINX_HOST=domain-name.fr
+     - NGINX_PORT=80
+    volumes:
+      - ./templates:/etc/nginx/templates
+
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - ./node_app:/app
+
+
