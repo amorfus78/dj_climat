@@ -1,11 +1,11 @@
-import * as yup from "yup"
+import * as yup from "yup";
 
-export const stringValidator = yup.string()
+export const stringValidator = yup.string();
 
 export const emailValidator = yup
   .string()
   .email("something is wrong with your email address")
-  .label("email")
+  .label("email");
 
 export const passwordValidator = yup
   .string()
@@ -17,4 +17,6 @@ export const passwordValidator = yup
     /[!@#$%^&*(),.?":{}|<>]/,
     "Must contain at least one special character"
   )
-  .label("Password")
+  .label("Password");
+
+export const ageValidator = yup.number().integer().positive().label("Age");
