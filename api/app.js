@@ -8,6 +8,7 @@ import prepareRoutes from "./src/prepareRoutes.js"
 import config from "./src/config.js"
 import knex from "knex"
 import BaseModel from "./src/db/models/BaseModel.js"
+import cors from "cors"
 
 var app = express()
 
@@ -24,6 +25,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, "public")))
+app.use(cors())
 
 const db = knex(config.db)
 

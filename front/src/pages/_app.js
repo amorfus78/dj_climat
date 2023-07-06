@@ -1,11 +1,15 @@
-import '@/styles/globals.css'
+import "@/styles/globals.css";
 
-const App = ({ Component, pageProps }) =>{
+import { AppContextProvider } from "@/hooks/useAppContext";
+
+const App = ({ Component, pageProps }) => {
   return (
     <div>
-      <Component {...pageProps} />
+      <AppContextProvider>
+        <Component {...pageProps} />
+      </AppContextProvider>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

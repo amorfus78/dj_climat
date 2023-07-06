@@ -1,9 +1,8 @@
 import validate from "../../middleware/validate.js"
 import {
   emailValidator,
-  nameValidator,
+  numberValidator,
   passwordValidator,
-  phoneNumberValidator,
 } from "../../validators.js"
 import hashPassword from "../../db/methods/hashPassword.js"
 import UserModel from "../../db/models/UserModel.js"
@@ -13,14 +12,13 @@ const signUpRoute = ({ app }) => {
     "/user",
     validate({
       body: {
-        display_name: nameValidator.required(),
         email: emailValidator.required(),
         password: passwordValidator.required(),
-        phone_number: phoneNumberValidator.required(),
+        age: numberValidator.required(),
       },
     }),
     async (req, res) => {
-      const { email, password, display_name, phone_number } = req.locals.body
+      const { email, password, age } = req.locals.body
 
       const user = await UserModel.query().findOne({ email: email })
 
@@ -33,9 +31,8 @@ const signUpRoute = ({ app }) => {
       const [passwordHash, passwordSalt] = await hashPassword(password)
 
       const newUser = await UserModel.query().insertAndFetch({
-        display_name: display_name ? display_name : null,
         email: email,
-        phone_number: phone_number,
+        age: age,
         password_hash: passwordHash,
         password_salt: passwordSalt,
       })

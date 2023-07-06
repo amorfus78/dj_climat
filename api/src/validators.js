@@ -23,4 +23,6 @@ export const phoneNumberValidator = yup
   .string()
   .matches(/[+](?:[0-9]●?){6,14}[0-9]/, "E.INVALID.phone")
 
+export const numberValidator = yup.number().integer().positive()
+
 export const stringValidator = yup.string()
