@@ -1,14 +1,9 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useContext, useState } from "react";
 import { createApi } from "@/services/api";
 import { useCookies } from "react-cookie";
 import { signUpService } from "@/services/signUpService";
 import { signInService } from "@/services/signInService";
+import { getEnRoadsService } from "@/services/getEnRoadsService";
 
 export const AppContextProvider = (props) => {
   const { ...otherProps } = props;
@@ -20,6 +15,7 @@ export const AppContextProvider = (props) => {
   const args = { api };
   const signUp = signUpService(args);
   const signIn = signInService({ api, setCookie });
+  const getEnRoads = getEnRoadsService(args);
 
   return (
     <AppContext.Provider
@@ -28,6 +24,7 @@ export const AppContextProvider = (props) => {
         actions: {
           signUp,
           signIn,
+          getEnRoads,
         },
       }}
     />
