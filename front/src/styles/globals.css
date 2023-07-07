@@ -25,3 +25,86 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.horizontal-slider {
+  width: 100%;
+  max-width: 500px;
+  height: 50px;
+}
+
+.thumb {
+  color: white;
+  cursor: pointer;
+  border: 5px solid gray;
+  box-sizing: border-box;
+  font-size: 0.6em;
+  text-align: center;
+  top: 1px;
+  width: 80px;
+  height: 48px;
+  line-height: 38px;
+  border-radius: 20px;
+}
+
+.red-thumb {
+  background-color: rgb(160, 15, 15);
+}
+
+.red-thumb.active {
+  background-color: rgb(212, 44, 44);
+}
+
+.blue-thumb {
+  background-color: rgb(15, 95, 160);
+}
+
+.blue-thumb.active {
+  background-color: rgb(18, 48, 170);
+}
+
+.yellow-thumb {
+  background-color: rgb(226, 238, 167);
+}
+
+.yellow-thumb.active {
+  background-color: rgb(232, 229, 15);
+}
+
+.track {
+  position: relative;
+  top: 4px;
+  height: 40px;
+  border-radius: 1rem;
+}
+
+.red-track {
+  background: rgb(185, 22, 22);
+}
+
+.red-track.red-track-1 {
+  background: rgb(222, 118, 118);
+}
+
+.blue-track {
+  background: rgb(22, 79, 185);
+}
+
+.blue-track.blue-track-1 {
+  background: rgb(118, 186, 222);
+}
+
+.yellow-track {
+  background: rgb(219, 198, 7);
+}
+
+.yellow-track.yellow-track-1 {
+  background: rgb(222, 217, 176);
+}
+
+.customSlider-mark {
+  cursor: pointer;
+  top: 6px;
+  width: 2px;
+  height: 15px;
+  background-color: orange;
+}
