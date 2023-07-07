@@ -1,0 +1,28 @@
+#Renommer le fichier en docker-compose.yml
+
+version: '3'
+services:
+  db:
+    image: postgres
+    ports:
+      - "3457:5432"
+    environment:
+      - POSTGRES_USER=youruser
+      - POSTGRES_PASSWORD=yourpassword
+      - POSTGRES_DB=dbname
+
+  node-app:
+    image: hackathon/node-web-app:1
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - ./front/app:/usr/src/app
+
+  node-api:
+    image: hackathon/node-api:1
+    restart: always
+    ports:
+      - 4356:4356
+    volumes:
+      - ./api/app:/usr/src/app
